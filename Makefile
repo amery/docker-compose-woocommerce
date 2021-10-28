@@ -72,6 +72,8 @@ build: files
 include $(GEN_MK)
 include $(CONFIG_MK)
 
+export COMPOSE_PROJECT_NAME=$(NAME)
+
 up: files
 	$(DOCKER_COMPOSE) up $(DOCKER_COMPOSE_UP_OPT)
 

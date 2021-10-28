@@ -49,7 +49,7 @@ clean:
 
 .gitignore: Makefile
 	for x in $(FILES); do \
-		grep -q "^$$x$$" $@ || echo "$$x" >> $@; \
+		grep -q "^/$$x$$" $@ || echo "/$$x" >> $@; \
 	done
 	touch $@
 

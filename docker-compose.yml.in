@@ -1,6 +1,18 @@
 # vim: set ft=yaml ts=2 sw=2 et:
 version: '3'
+
 services:
+  @@MYSQL_SERVER@@:
+    image: @@MYSQL_IMAGE@@
+    ports:
+      - "3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    env_file:
+      - "db.env"
+    restart: always
+    networks:
+      - default
 
   @@NAME@@:
     container_name: whoami

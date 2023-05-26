@@ -6,7 +6,8 @@ SHELL = /bin/sh
 
 # generated outputs
 #
-FILES = docker-compose.yml
+FILES = docker-compose.yml \
+	db.env
 
 CONFIG_MK = config.mk
 GEN_MK = gen.mk

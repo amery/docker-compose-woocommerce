@@ -7,9 +7,12 @@ SHELL = /bin/sh
 # generated outputs
 #
 FILES = docker-compose.yml \
+	docker/Dockerfile \
+	docker/php.ini \
 	db.env \
 	nginx.conf \
 	nginx.env \
+	wordpress.env
 
 CONFIG_MK = config.mk
 GEN_MK = gen.mk
@@ -81,6 +84,7 @@ up: files
 	$(DOCKER_COMPOSE) up $(DOCKER_COMPOSE_UP_OPT)
 
 start: files
+	mkdir -p overlay .overlay
 	$(DOCKER_COMPOSE) up -d $(DOCKER_COMPOSE_UP_OPT)
 
 stop: files

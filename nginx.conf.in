@@ -1,0 +1,14 @@
+# vim: set ft=sh ts=4 sw=4 et!:
+
+server_tokens off;
+
+server {
+	listen [::]:80 default_server ipv6only=off;
+	server_name @@HOSTNAME@@;
+	root /var/www;
+
+	access_log /var/log/nginx/@@HOSTNAME@@-access.log;
+	error_log /var/log/nginx/@@HOSTNAME@@-error.log;
+
+	index index.php;
+}

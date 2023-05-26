@@ -9,3 +9,4 @@ MYSQL_DATABASE ?= $(NAME)
 MYSQL_USER ?= $(MYSQL_DATABASE)
 MYSQL_PASSWORD ?= secret1
 MYSQL_ROOT_PASSWORD ?= secret2
+NGINX_IMAGE ?= amery/docker-alpine-nginx

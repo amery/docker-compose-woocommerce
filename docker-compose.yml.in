@@ -17,11 +17,21 @@ services:
   @@NAME@@:
     container_name: whoami
     image: traefik/whoami
+    networks:
+      - default
+
+  nginx:
+    image: @@NGINX_IMAGE@@
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.@@NAME@@.rule=Host(`@@HOSTNAME@@`)"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/default.conf"
+    env_file:
+      - "nginx.env"
     networks:
       - @@TRAEFIK_BRIDGE@@
+      - default
 
 networks:
   @@TRAEFIK_BRIDGE@@:

@@ -8,7 +8,9 @@ SHELL = /bin/sh
 # generated outputs
 #
 FILES = docker-compose.yml \
-	db.env
+	db.env \
+	nginx.conf \
+	nginx.env \
 
 CONFIG_MK = config.mk
 GEN_MK = gen.mk

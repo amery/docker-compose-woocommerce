@@ -1,3 +1,5 @@
 /docker-compose.yml
 /gen.mk
 /db.env
+/nginx.conf
+/nginx.env

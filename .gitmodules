@@ -1,4 +1,4 @@
 [submodule "WordPress"]
 	path = WordPress
 	url = https://github.com/WordPress/WordPress
-	branch = 6.2-branch
+	branch = 6.4-branch

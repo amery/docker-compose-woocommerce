@@ -101,4 +101,8 @@ config: files
 
 inspect:
 	$(DOCKER_COMPOSE) ps
-	$(DOCKER) network inspect -v $(TRAEFIK_BRIDGE) | $(COLOUR_JSON)
+	for x in $(PROXY_BRIDGE) $(NAME)_default; do \
+		if $(DOCKER) network list | grep -q " $$x "; then \
+			$(DOCKER) network inspect -v $$x; \
+		fi; \
+	done | $(COLOUR_JSON)

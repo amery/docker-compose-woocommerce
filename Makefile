@@ -1,5 +1,5 @@
 DOCKER ?= docker
-DOCKER_COMPOSE ?= docker-compose
+DOCKER_COMPOSE ?= $(DOCKER) compose
 
 DOCKER_COMPOSE_UP_OPT =
 SHELL = /bin/sh

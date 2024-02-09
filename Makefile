@@ -23,8 +23,10 @@ PYGMENTIZE ?= $(shell which pygmentize)
 
 ifneq ($(PYGMENTIZE),)
 COLOUR_YAML = $(PYGMENTIZE) -l yaml
+COLOUR_JSON = $(PYGMENTIZE) -l json
 else
 COLOUR_YAML = cat
+COLOUR_JSON = cat
 endif
 
 # variables
@@ -99,4 +101,4 @@ config: files
 
 inspect:
 	$(DOCKER_COMPOSE) ps
-	$(DOCKER) network inspect -v $(TRAEFIK_BRIDGE) | $(COLOUR_YAML)
+	$(DOCKER) network inspect -v $(TRAEFIK_BRIDGE) | $(COLOUR_JSON)

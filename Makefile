@@ -114,7 +114,7 @@ config: files
 
 inspect:
 	$(DOCKER_COMPOSE) ps
-	for x in $(PROXY_BRIDGE) $(NAME)_default; do \
+	for x in $(TRAEFIK_BRIDGE) $(NAME)_default; do \
 		if $(DOCKER) network list | grep -q " $$x "; then \
 			$(DOCKER) network inspect -v $$x; \
 		fi; \

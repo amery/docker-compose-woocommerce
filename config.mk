@@ -1,3 +1,3 @@
 TRAEFIK_BRIDGE ?= traefiknet
-NAME ?= whoami
+NAME ?= $(notdir $(CURDIR))
 HOSTNAME ?= $(NAME).docker.localhost

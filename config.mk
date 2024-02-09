@@ -1,7 +1,7 @@
 TRAEFIK_BRIDGE ?= traefiknet
 USER_GID ?= $(shell id -ur)
 USER_UID ?= $(shell id -gr)
-NAME ?= wordpress
+NAME ?= $(notdir $(CURDIR))
 HOSTNAME ?= $(NAME).docker.localhost
 MYSQL_IMAGE ?= quay.io/amery/docker-alpine-mariadb
 MYSQL_SERVER ?= db

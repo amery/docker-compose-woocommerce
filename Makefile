@@ -1,5 +1,6 @@
 DOCKER ?= docker
-DOCKER_COMPOSE ?= docker-compose
+DOCKER_COMPOSE ?= $(DOCKER) compose
+GIT ?= git
 
 DOCKER_COMPOSE_UP_OPT =
 SHELL = /bin/sh
@@ -29,8 +30,10 @@ PYGMENTIZE ?= $(shell which pygmentize)
 
 ifneq ($(PYGMENTIZE),)
 COLOUR_YAML = $(PYGMENTIZE) -l yaml
+COLOUR_JSON = $(PYGMENTIZE) -l json
 else
 COLOUR_YAML = cat
+COLOUR_JSON = cat
 endif
 
 # variables
@@ -41,7 +44,7 @@ GEN_MK_VARS = $(shell $(GET_VARS_SH) $(TEMPLATES))
 
 .PHONY: all files clean files pull build
 .PHONY: up start stop restart logs
-.PHONY: config inspect
+.PHONY: update config inspect
 ifneq ($(SHELL),)
 .PHONY: shell
 endif
@@ -101,9 +104,25 @@ shell: files
 	$(DOCKER_COMPOSE) exec $(NAME) $(SHELL)
 endif
 
+update:
+	$(GIT) remote update --prune
+	[ ! -s .gitmodules ] || $(GIT) submodule update --remote --init
+	for x in */.gitmodules; do \
+		if [ -s "$$x" ]; then \
+			cd $$(dirname $$x); \
+			pwd; \
+			$(GIT) submodule update --init --recursive; \
+			cd - > /dev/null; \
+		fi; \
+	done
+
 config: files
 	$(DOCKER_COMPOSE) config | $(COLOUR_YAML)
 
 inspect:
 	$(DOCKER_COMPOSE) ps
-	$(DOCKER) network inspect -v $(TRAEFIK_BRIDGE) | $(COLOUR_YAML)
+	for x in $(TRAEFIK_BRIDGE) $(NAME)_default; do \
+		if $(DOCKER) network list | grep -q " $$x "; then \
+			$(DOCKER) network inspect -v $$x; \
+		fi; \
+	done | $(COLOUR_JSON)

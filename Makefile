@@ -101,7 +101,7 @@ logs: files
 
 ifneq ($(SHELL),)
 shell: files
-	$(DOCKER_COMPOSE) exec $(NAME) $(SHELL)
+	$(DOCKER_COMPOSE) exec app $(SHELL)
 endif
 
 update:

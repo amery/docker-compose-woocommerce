@@ -12,4 +12,4 @@ MYSQL_ROOT_PASSWORD ?= secret2
 NGINX_IMAGE ?= quay.io/amery/docker-alpine-nginx
 PHP_IMAGE ?= quay.io/amery/docker-alpine-php7:latest
 PHP_MAX_UPLOAD_MB ?= 4096
-PHP_MEMORY_LIMIT ?= 16
+PHP_MEMORY_LIMIT_MB ?= 256

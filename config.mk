@@ -10,3 +10,6 @@ MYSQL_USER ?= $(MYSQL_DATABASE)
 MYSQL_PASSWORD ?= secret1
 MYSQL_ROOT_PASSWORD ?= secret2
 NGINX_IMAGE ?= amery/docker-alpine-nginx
+PHP_IMAGE ?= amery/docker-alpine-php7:latest
+PHP_MAX_UPLOAD_MB ?= 4096
+PHP_MEMORY_LIMIT ?= 16

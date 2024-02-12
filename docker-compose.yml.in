@@ -1,6 +1,14 @@
 # vim: set ft=yaml ts=2 sw=2 et:
 version: '3'
 
+volumes:
+  app:
+    driver: local
+    driver_opts:
+      type: overlay
+      o: "lowerdir=${PWD}/app,upperdir=${PWD}/overlay,workdir=${PWD}/.overlay"
+      device: overlay
+
 services:
   @@MYSQL_SERVER@@:
     image: @@MYSQL_IMAGE@@
@@ -14,9 +22,12 @@ services:
     networks:
       - default
 
-  @@NAME@@:
-    container_name: whoami
-    image: traefik/whoami
+  app:
+    build: ./docker
+    volumes:
+      - "app:/var/www"
+    env_file:
+      - "app.env"
     networks:
       - default
 
@@ -26,6 +37,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.@@NAME@@.rule=Host(`@@HOSTNAME@@`)"
     volumes:
+      - "app:/var/www"
       - "./nginx.conf:/etc/nginx/conf.d/default.conf"
     env_file:
       - "nginx.env"

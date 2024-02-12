@@ -1,0 +1,35 @@
+# vim: set ft=dockerfile ts=4 sw=4 et:
+FROM @@PHP_IMAGE@@
+
+#
+# extra php dependencies
+#
+RUN apk --update upgrade -U && apk --no-cache add \
+	php7-curl \
+	php7-dom \
+	php7-gd \
+	php7-iconv \
+	php7-imap \
+	php7-json \
+	php7-ldap \
+	php7-mcrypt \
+	php7-mysqli \
+	php7-pdo \
+	php7-pdo_mysql \
+	php7-posix \
+	php7-session \
+	php7-simplexml \
+	php7-soap \
+	php7-xml \
+	php7-xmlrpc
+
+#
+# scriptable access to database
+#
+RUN apk --update upgrade -U && apk --no-cache add \
+    mariadb-client
+
+#
+# php configuration
+#
+COPY php.ini /etc/php7/conf.d/50-settings.ini

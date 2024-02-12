@@ -1,0 +1,6 @@
+; Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes)
+memory_limit = @@PHP_MEMORY_LIMIT@@
+
+; max upload size
+post_max_size = @@PHP_MAX_UPLOAD_MB@@M
+upload_max_filesize = @@PHP_MAX_UPLOAD_MB@@M

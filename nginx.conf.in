@@ -7,6 +7,9 @@ server {
 	server_name @@HOSTNAME@@;
 	root /var/www;
 
+	client_max_body_size @@PHP_MAX_UPLOAD_MB@@m;
+	client_body_buffer_size 128k;
+
 	access_log /var/log/nginx/@@HOSTNAME@@-access.log;
 	error_log /var/log/nginx/@@HOSTNAME@@-error.log;
 

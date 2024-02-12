@@ -85,7 +85,7 @@ export COMPOSE_PROJECT_NAME=$(NAME)
 
 .PHONY: prestart
 prestart: files
-	mkdir -p overlay .overlay
+	mkdir -p overlay .overlay vendor
 
 up: prestart
 	$(DOCKER_COMPOSE) up $(DOCKER_COMPOSE_UP_OPT)

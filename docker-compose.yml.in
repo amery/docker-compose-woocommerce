@@ -26,6 +26,7 @@ services:
     build: ./docker
     volumes:
       - "app:/var/www"
+      - "./vendor:/var/www/vendor"
     env_file:
       - "app.env"
     networks:

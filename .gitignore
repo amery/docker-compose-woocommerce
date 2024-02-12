@@ -1,4 +1,5 @@
 /.overlay
+/vendor
 /docker-compose.yml
 /docker/Dockerfile
 /docker/php.ini

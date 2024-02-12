@@ -83,17 +83,20 @@ include $(CONFIG_MK)
 
 export COMPOSE_PROJECT_NAME=$(NAME)
 
-up: files
+.PHONY: prestart
+prestart: files
+	mkdir -p overlay .overlay vendor
+
+up: prestart
 	$(DOCKER_COMPOSE) up $(DOCKER_COMPOSE_UP_OPT)
 
-start: files
-	mkdir -p overlay .overlay
+start: prestart
 	$(DOCKER_COMPOSE) up -d $(DOCKER_COMPOSE_UP_OPT)
 
 stop: files
 	$(DOCKER_COMPOSE) down --remove-orphans
 
-restart: files
+restart: prestart
 	$(DOCKER_COMPOSE) restart
 
 logs: files
@@ -101,7 +104,7 @@ logs: files
 
 ifneq ($(SHELL),)
 shell: files
-	$(DOCKER_COMPOSE) exec $(NAME) $(SHELL)
+	$(DOCKER_COMPOSE) exec app $(SHELL)
 endif
 
 update:

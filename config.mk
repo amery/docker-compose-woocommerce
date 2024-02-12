@@ -13,3 +13,7 @@ NGINX_IMAGE ?= quay.io/amery/docker-alpine-nginx
 PHP_IMAGE ?= quay.io/amery/docker-alpine-php7:latest
 PHP_MAX_UPLOAD_MB ?= 4096
 PHP_MEMORY_LIMIT_MB ?= 256
+WP_ADMIN_EMAIL ?= admin@example.org
+WP_ADMIN_USER ?= admin
+WP_LANG ?= en_GB
+WP_TITLE ?= Yet Another Wordpress

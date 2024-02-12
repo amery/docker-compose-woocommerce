@@ -15,7 +15,7 @@ query() {
 
 # wait for database
 #
-if [ -z "${DB_SERVER:-}"]; then
+if [ -z "${DB_SERVER:-}" ]; then
 	cat <<-EOT >&2
 	error: DB_SERVER not specified
 	EOT

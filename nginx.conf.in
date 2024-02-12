@@ -13,7 +13,38 @@ server {
 	access_log /var/log/nginx/@@HOSTNAME@@-access.log;
 	error_log /var/log/nginx/@@HOSTNAME@@-error.log;
 
+	rewrite_log on;
+
 	index index.php;
+
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	# https://developer.wordpress.org/advanced-administration/server/web-server/nginx/
+	location ~ /\. {
+		deny all;
+	}
+
+	location ~* /(?:uploads|files)/.*\.php$ {
+		deny all;
+	}
+
+	location / {
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+		expires max;
+		log_not_found off;
+	}
 
 	location ~ \.php$ {
 		# Split $uri to $fastcgi_script_name and $fastcgi_path_info.

@@ -33,3 +33,8 @@ RUN apk --update upgrade -U && apk --no-cache add \
 # php configuration
 #
 COPY php.ini /etc/php7/conf.d/50-settings.ini
+
+#
+# setup
+#
+COPY app.sh /etc/entrypoint.d/

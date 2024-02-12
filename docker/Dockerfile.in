@@ -1,4 +1,4 @@
-# vim: set ft=dockerfile ts=4 sw=4 et:
+# vim: set ft=dockerfile ts=4 sw=4 et!:
 FROM @@PHP_IMAGE@@
 
 #
@@ -27,7 +27,7 @@ RUN apk --update upgrade -U && apk --no-cache add \
 # scriptable access to database
 #
 RUN apk --update upgrade -U && apk --no-cache add \
-    mariadb-client
+	mariadb-client
 
 #
 # php configuration

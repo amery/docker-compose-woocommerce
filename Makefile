@@ -10,10 +10,10 @@ SHELL = /bin/sh
 FILES = docker-compose.yml \
 	docker/Dockerfile \
 	docker/php.ini \
+	app.env \
 	db.env \
 	nginx.conf \
-	nginx.env \
-	wordpress.env
+	nginx.env
 
 CONFIG_MK = config.mk
 GEN_MK = gen.mk

@@ -3,7 +3,7 @@
 /docker/Dockerfile
 /docker/php.ini
 /gen.mk
+/app.env
 /db.env
 /nginx.conf
 /nginx.env
-/wordpress.env

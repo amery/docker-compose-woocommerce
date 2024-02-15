@@ -42,7 +42,14 @@ if [ ! -x "$vendored" ]; then
 fi
 
 WP=/usr/bin/wp
-[ -x "$WP" ] || ln -s "$vendored" "$WP"
+if [ ! -x "$WP" -o -L "$WP" ]; then
+	cat <<-EOT > "$WP~"
+	#!/bin/sh
+	exec run-user $vendored "\$@"
+	EOT
+	chmod +x "$WP~"
+	mv "$WP~" "$WP"
+fi
 
 wp() {
 	run-user "$WP" "$@"

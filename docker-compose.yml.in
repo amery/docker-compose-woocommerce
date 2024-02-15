@@ -27,6 +27,7 @@ services:
     volumes:
       - "app:/var/www"
       - "./vendor:/var/www/vendor"
+      - "./msmtprc:/etc/msmtprc"
     env_file:
       - "app.env"
     networks:

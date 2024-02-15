@@ -13,6 +13,12 @@ query() {
 	mysql -h$DB_SERVER ${DB_PORT:+-P$DB_PORT} "-u${DB_USER:-root}" ${DB_PASSWD:+-p"$DB_PASSWD"} "$@"
 }
 
+# msmtp logs
+#
+F=/var/log/msmtp.log
+touch "$F"
+chown appuser:appuser "$F"
+
 # wp-cli
 #
 vendored="$PWD/vendor/wp-cli/wp-cli/bin/wp"

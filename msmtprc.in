@@ -1,0 +1,14 @@
+defaults
+tls on
+tls_trust_file /etc/ssl/cert.pem
+logfile /var/log/msmtp.log
+
+account @@NAME@@
+	host @@SMTP_SERVER@@
+	port @@SMTP_PORT@@
+	auth on
+	user @@SMTP_USER_EMAIL@@
+	password @@SMTP_USER_PASSWORD@@
+	from @@WP_EMAIL@@
+
+account default : @@NAME@@

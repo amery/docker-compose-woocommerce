@@ -6,5 +6,6 @@
 /gen.mk
 /app.env
 /db.env
+/msmtprc
 /nginx.conf
 /nginx.env

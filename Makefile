@@ -12,6 +12,7 @@ FILES = docker-compose.yml \
 	docker/php.ini \
 	app.env \
 	db.env \
+	msmtprc \
 	nginx.conf \
 	nginx.env
 
